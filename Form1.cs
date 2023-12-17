@@ -147,17 +147,6 @@ namespace EverydayWears
             }
         }
 
-
-        private void SubmitButton_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Do you want to submit the order?", "Confirmation", MessageBoxButtons.YesNo);
-
-            if (result == DialogResult.Yes)
-            {
-                UpdateStockFile("InitialStocks.txt");
-            }
-        }
-
         private void DressCountNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             int SelectedDressIndex = DressListBox.SelectedIndex;
@@ -196,6 +185,22 @@ namespace EverydayWears
                 DisplayPanel.Visible = false;
                 MessageBox.Show("Kindly select a Dress and Size appropriately", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void SubmitButton_Click(object sender, EventArgs e)
+        {
+
+            DialogResult result = MessageBox.Show("Do you want to submit the order?", "Confirmation", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                UpdateStockFile("InitialStocks.txt");
+            }
+        }
+
+        private void BookButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

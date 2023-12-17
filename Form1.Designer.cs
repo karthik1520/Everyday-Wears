@@ -56,15 +56,21 @@
             DisplayPurchaseDateLabel = new Label();
             DressCountLabel = new Label();
             DressCountNumericUpDown = new NumericUpDown();
-            BookingTransactionNumberLabel = new Label();
             TotalDressPurchasedLabel = new Label();
             BookingTotalDressPurchased = new Label();
-            TotalCostLabel = new Label();
             BookingTotalCostLabel = new Label();
             StockPanel = new Panel();
+            BookingGroupBox = new GroupBox();
+            TotalCostLabel = new Label();
+            TotalItemsLabel = new Label();
+            PhoneNumberLabel = new Label();
+            DateOfTranscationLabel = new Label();
+            CustomerNameLabel = new Label();
+            BookingTransactionLabel = new Label();
             DisplayPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DressCountNumericUpDown).BeginInit();
             StockPanel.SuspendLayout();
+            BookingGroupBox.SuspendLayout();
             SuspendLayout();
             // 
             // DressListBox
@@ -164,6 +170,7 @@
             SubmitButton.TabIndex = 9;
             SubmitButton.Text = "Submit";
             SubmitButton.UseVisualStyleBackColor = true;
+            SubmitButton.Click += SubmitButton_Click;
             // 
             // AddToCartButton
             // 
@@ -183,6 +190,7 @@
             BookButton.TabIndex = 11;
             BookButton.Text = "Book";
             BookButton.UseVisualStyleBackColor = true;
+            BookButton.Click += BookButton_Click;
             // 
             // AddToCartListBox
             // 
@@ -341,15 +349,6 @@
             DressCountNumericUpDown.TabIndex = 16;
             DressCountNumericUpDown.ValueChanged += DressCountNumericUpDown_ValueChanged;
             // 
-            // BookingTransactionNumberLabel
-            // 
-            BookingTransactionNumberLabel.AutoSize = true;
-            BookingTransactionNumberLabel.Location = new Point(199, 33);
-            BookingTransactionNumberLabel.Name = "BookingTransactionNumberLabel";
-            BookingTransactionNumberLabel.Size = new Size(142, 20);
-            BookingTransactionNumberLabel.TabIndex = 25;
-            BookingTransactionNumberLabel.Text = "Transaction Number";
-            // 
             // TotalDressPurchasedLabel
             // 
             TotalDressPurchasedLabel.AutoSize = true;
@@ -368,16 +367,6 @@
             BookingTotalDressPurchased.Size = new Size(153, 20);
             BookingTotalDressPurchased.TabIndex = 27;
             BookingTotalDressPurchased.Text = "Total Dress Purchased";
-            // 
-            // TotalCostLabel
-            // 
-            TotalCostLabel.AutoSize = true;
-            TotalCostLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            TotalCostLabel.Location = new Point(97, 221);
-            TotalCostLabel.Name = "TotalCostLabel";
-            TotalCostLabel.Size = new Size(87, 20);
-            TotalCostLabel.TabIndex = 28;
-            TotalCostLabel.Text = "Total Cost :";
             // 
             // BookingTotalCostLabel
             // 
@@ -401,11 +390,87 @@
             StockPanel.Size = new Size(237, 119);
             StockPanel.TabIndex = 17;
             // 
+            // BookingGroupBox
+            // 
+            BookingGroupBox.Controls.Add(TotalCostLabel);
+            BookingGroupBox.Controls.Add(TotalItemsLabel);
+            BookingGroupBox.Controls.Add(PhoneNumberLabel);
+            BookingGroupBox.Controls.Add(DateOfTranscationLabel);
+            BookingGroupBox.Controls.Add(CustomerNameLabel);
+            BookingGroupBox.Controls.Add(BookingTransactionLabel);
+            BookingGroupBox.Location = new Point(220, 350);
+            BookingGroupBox.Name = "BookingGroupBox";
+            BookingGroupBox.Size = new Size(492, 305);
+            BookingGroupBox.TabIndex = 18;
+            BookingGroupBox.TabStop = false;
+            BookingGroupBox.Text = "Booking Group Box";
+            // 
+            // TotalCostLabel
+            // 
+            TotalCostLabel.AutoSize = true;
+            TotalCostLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            TotalCostLabel.Location = new Point(91, 246);
+            TotalCostLabel.Name = "TotalCostLabel";
+            TotalCostLabel.Size = new Size(87, 20);
+            TotalCostLabel.TabIndex = 5;
+            TotalCostLabel.Text = "Total Cost :";
+            // 
+            // TotalItemsLabel
+            // 
+            TotalItemsLabel.AutoSize = true;
+            TotalItemsLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            TotalItemsLabel.Location = new Point(82, 201);
+            TotalItemsLabel.Name = "TotalItemsLabel";
+            TotalItemsLabel.Size = new Size(96, 20);
+            TotalItemsLabel.TabIndex = 4;
+            TotalItemsLabel.Text = "Total Items :";
+            // 
+            // PhoneNumberLabel
+            // 
+            PhoneNumberLabel.AutoSize = true;
+            PhoneNumberLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            PhoneNumberLabel.Location = new Point(55, 160);
+            PhoneNumberLabel.Name = "PhoneNumberLabel";
+            PhoneNumberLabel.Size = new Size(123, 20);
+            PhoneNumberLabel.TabIndex = 3;
+            PhoneNumberLabel.Text = "Phone Number :";
+            // 
+            // DateOfTranscationLabel
+            // 
+            DateOfTranscationLabel.AutoSize = true;
+            DateOfTranscationLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            DateOfTranscationLabel.Location = new Point(24, 119);
+            DateOfTranscationLabel.Name = "DateOfTranscationLabel";
+            DateOfTranscationLabel.Size = new Size(154, 20);
+            DateOfTranscationLabel.TabIndex = 2;
+            DateOfTranscationLabel.Text = "Date of Transaction :";
+            // 
+            // CustomerNameLabel
+            // 
+            CustomerNameLabel.AutoSize = true;
+            CustomerNameLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            CustomerNameLabel.Location = new Point(47, 79);
+            CustomerNameLabel.Name = "CustomerNameLabel";
+            CustomerNameLabel.Size = new Size(131, 20);
+            CustomerNameLabel.TabIndex = 1;
+            CustomerNameLabel.Text = "Customer Name :";
+            // 
+            // BookingTransactionLabel
+            // 
+            BookingTransactionLabel.AutoSize = true;
+            BookingTransactionLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            BookingTransactionLabel.Location = new Point(18, 36);
+            BookingTransactionLabel.Name = "BookingTransactionLabel";
+            BookingTransactionLabel.Size = new Size(160, 20);
+            BookingTransactionLabel.TabIndex = 0;
+            BookingTransactionLabel.Text = "Transaction Number :";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1092, 704);
+            Controls.Add(BookingGroupBox);
             Controls.Add(StockPanel);
             Controls.Add(DisplayPanel);
             Controls.Add(AddToCartListBox);
@@ -424,6 +489,8 @@
             ((System.ComponentModel.ISupportInitialize)DressCountNumericUpDown).EndInit();
             StockPanel.ResumeLayout(false);
             StockPanel.PerformLayout();
+            BookingGroupBox.ResumeLayout(false);
+            BookingGroupBox.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -463,8 +530,14 @@
         private Label TotalDressPurchasedLabel;
         private Label BookingTransactionNumberLabel;
         private Label BookingTotalCostLabel;
-        private Label TotalCostLabel;
         private Label BookingTotalDressPurchased;
         private Panel StockPanel;
+        private GroupBox BookingGroupBox;
+        private Label BookingTransactionLabel;
+        private Label TotalItemsLabel;
+        private Label PhoneNumberLabel;
+        private Label DateOfTranscationLabel;
+        private Label CustomerNameLabel;
+        private Label TotalCostLabel;
     }
 }
