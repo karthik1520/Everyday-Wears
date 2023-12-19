@@ -18,6 +18,7 @@ namespace EverydayWears
         private int[,] OverallStockAvailable = new int[DressName.Length, DressSize.Length];
         private int[,] DressStockAvailable = new int[DressName.Length, DressSize.Length];
 
+        private int TransactionNumber = 1;
         public Form1()
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace EverydayWears
             ReadInitialStockFromFile("InitialStocks.txt");
             StockPanel.Visible = false; // Initialize DisplayPanel visibility
             DisplayPanel.Visible = false;
+            BookingGroupBox.Visible = false;
 
         }
         private void UpdateStockLabels()
@@ -186,6 +188,10 @@ namespace EverydayWears
                 MessageBox.Show("Kindly select a Dress and Size appropriately", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void TransactionNumberCounter()
+        {
+            TransactionNumberLabel.Text = TransactionNumber.ToString();
+        }
 
         private void SubmitButton_Click(object sender, EventArgs e)
         {
@@ -194,13 +200,83 @@ namespace EverydayWears
 
             if (result == DialogResult.Yes)
             {
+                TransactionNumber++;
+                TransactionNumberCounter();
                 UpdateStockFile("InitialStocks.txt");
+                string TransactionFile = "Transaction.txt";
+                string SalesReport = "SalesReport.txt";
+                try
+                {
+                    using (StreamWriter Transaction = new StreamWriter(TransactionFile, true))
+                    using (StreamWriter Sales = new StreamWriter(SalesReport, true))
+                    {
+                        Transaction.WriteLine($"{TransactionNumberLabel.Text}");
+                        Transaction.WriteLine($"{CustomerNameTextBox.Text}");
+                        Transaction.WriteLine($"{DateLabel.Text}");
+                        Transaction.WriteLine($"{PhoneNumberTextBox.Text}");
+                        Transaction.WriteLine($"{ItemCountLabel.Text}");
+
+                        decimal OverallCost = 0;
+                        foreach (string ItemsInCart in AddToCartListBox.Items)
+                        {
+                            string[] CartDetails = ItemsInCart.Split('-');
+                            string Dress = CartDetails[0].Trim();
+                            string Size = CartDetails[1].Trim();
+                            int ItemCount = int.Parse(CartDetails[2].Trim());
+
+                            decimal CostOfDress = DressRate[DressName.ToList().IndexOf(Dress), DressSize.ToList().IndexOf(Size)];
+                            decimal CostOfOverallDress = CostOfDress * ItemCount;
+
+                            OverallCost += CostOfOverallDress;
+
+                            Transaction.WriteLine($"Item: {Dress} - {Size}, Count: {ItemCount}, Cost: {CostOfOverallDress}");
+
+                            UpdateSalesReport(Sales, Dress, ItemCount, CostOfOverallDress);
+                        }
+                        Transaction.WriteLine($"{OverallCost}");
+                    }
+                    MessageBox.Show("Your Order has been submitted successfully, Transaction Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                catch
+                {
+                    MessageBox.Show("Error in submitting the Order", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void UpdateSalesReport(StreamWriter writer, string Dress, int ItemCount, decimal OverallCost)
+        {
+            try
+            {
+                string UpdateSalesReport = "SalesReport.txt";
+                bool NewFile = !File.Exists(UpdateSalesReport);
+
+                using (StreamWriter SalesReport = new StreamWriter(UpdateSalesReport, true))
+                {
+                    if (NewFile)
+                    {
+                        SalesReport.WriteLine("Item Name");
+                        SalesReport.WriteLine("Item Count");
+                        SalesReport.WriteLine("Item Cost");
+                    }
+
+                    SalesReport.WriteLine(Dress.Trim());
+                    SalesReport.WriteLine(ItemCount);
+                    SalesReport.WriteLine(OverallCost);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Error updating sales", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void BookButton_Click(object sender, EventArgs e)
         {
-
+            BookingGroupBox.Visible = true;
+            DateLabel.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            TransactionNumberCounter();
         }
     }
 }

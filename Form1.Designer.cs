@@ -61,16 +61,28 @@
             BookingTotalCostLabel = new Label();
             StockPanel = new Panel();
             BookingGroupBox = new GroupBox();
+            OverallCostLabel = new Label();
+            ItemCountLabel = new Label();
+            PhoneNumberTextBox = new TextBox();
+            CustomerNameTextBox = new TextBox();
+            DateLabel = new Label();
+            TransactionNumberLabel = new Label();
             TotalCostLabel = new Label();
             TotalItemsLabel = new Label();
             PhoneNumberLabel = new Label();
             DateOfTranscationLabel = new Label();
             CustomerNameLabel = new Label();
             BookingTransactionLabel = new Label();
+            SummaryButton = new Button();
+            ClearButton = new Button();
+            ExitButton = new Button();
+            SearchButton = new Button();
+            panel1 = new Panel();
             DisplayPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DressCountNumericUpDown).BeginInit();
             StockPanel.SuspendLayout();
             BookingGroupBox.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // DressListBox
@@ -154,7 +166,7 @@
             // 
             // DisplayButton
             // 
-            DisplayButton.Location = new Point(597, 45);
+            DisplayButton.Location = new Point(18, 12);
             DisplayButton.Name = "DisplayButton";
             DisplayButton.Size = new Size(94, 29);
             DisplayButton.TabIndex = 8;
@@ -164,7 +176,7 @@
             // 
             // SubmitButton
             // 
-            SubmitButton.Location = new Point(597, 215);
+            SubmitButton.Location = new Point(18, 115);
             SubmitButton.Name = "SubmitButton";
             SubmitButton.Size = new Size(94, 29);
             SubmitButton.TabIndex = 9;
@@ -174,7 +186,7 @@
             // 
             // AddToCartButton
             // 
-            AddToCartButton.Location = new Point(597, 104);
+            AddToCartButton.Location = new Point(152, 12);
             AddToCartButton.Name = "AddToCartButton";
             AddToCartButton.Size = new Size(94, 29);
             AddToCartButton.TabIndex = 10;
@@ -184,7 +196,7 @@
             // 
             // BookButton
             // 
-            BookButton.Location = new Point(597, 163);
+            BookButton.Location = new Point(18, 58);
             BookButton.Name = "BookButton";
             BookButton.Size = new Size(94, 29);
             BookButton.TabIndex = 11;
@@ -196,9 +208,9 @@
             // 
             AddToCartListBox.FormattingEnabled = true;
             AddToCartListBox.ItemHeight = 20;
-            AddToCartListBox.Location = new Point(713, 45);
+            AddToCartListBox.Location = new Point(614, 50);
             AddToCartListBox.Name = "AddToCartListBox";
-            AddToCartListBox.Size = new Size(254, 224);
+            AddToCartListBox.Size = new Size(255, 284);
             AddToCartListBox.TabIndex = 12;
             // 
             // DisplayPanel
@@ -392,6 +404,12 @@
             // 
             // BookingGroupBox
             // 
+            BookingGroupBox.Controls.Add(OverallCostLabel);
+            BookingGroupBox.Controls.Add(ItemCountLabel);
+            BookingGroupBox.Controls.Add(PhoneNumberTextBox);
+            BookingGroupBox.Controls.Add(CustomerNameTextBox);
+            BookingGroupBox.Controls.Add(DateLabel);
+            BookingGroupBox.Controls.Add(TransactionNumberLabel);
             BookingGroupBox.Controls.Add(TotalCostLabel);
             BookingGroupBox.Controls.Add(TotalItemsLabel);
             BookingGroupBox.Controls.Add(PhoneNumberLabel);
@@ -404,6 +422,56 @@
             BookingGroupBox.TabIndex = 18;
             BookingGroupBox.TabStop = false;
             BookingGroupBox.Text = "Booking Group Box";
+            // 
+            // OverallCostLabel
+            // 
+            OverallCostLabel.AutoSize = true;
+            OverallCostLabel.Location = new Point(192, 246);
+            OverallCostLabel.Name = "OverallCostLabel";
+            OverallCostLabel.Size = new Size(89, 20);
+            OverallCostLabel.TabIndex = 11;
+            OverallCostLabel.Text = "Overall Cost";
+            // 
+            // ItemCountLabel
+            // 
+            ItemCountLabel.AutoSize = true;
+            ItemCountLabel.Location = new Point(192, 201);
+            ItemCountLabel.Name = "ItemCountLabel";
+            ItemCountLabel.Size = new Size(82, 20);
+            ItemCountLabel.TabIndex = 10;
+            ItemCountLabel.Text = "Item Count";
+            // 
+            // PhoneNumberTextBox
+            // 
+            PhoneNumberTextBox.Location = new Point(192, 160);
+            PhoneNumberTextBox.Name = "PhoneNumberTextBox";
+            PhoneNumberTextBox.Size = new Size(125, 27);
+            PhoneNumberTextBox.TabIndex = 9;
+            // 
+            // CustomerNameTextBox
+            // 
+            CustomerNameTextBox.Location = new Point(192, 79);
+            CustomerNameTextBox.Name = "CustomerNameTextBox";
+            CustomerNameTextBox.Size = new Size(125, 27);
+            CustomerNameTextBox.TabIndex = 8;
+            // 
+            // DateLabel
+            // 
+            DateLabel.AutoSize = true;
+            DateLabel.Location = new Point(192, 119);
+            DateLabel.Name = "DateLabel";
+            DateLabel.Size = new Size(41, 20);
+            DateLabel.TabIndex = 7;
+            DateLabel.Text = "Date";
+            // 
+            // TransactionNumberLabel
+            // 
+            TransactionNumberLabel.AutoSize = true;
+            TransactionNumberLabel.Location = new Point(192, 36);
+            TransactionNumberLabel.Name = "TransactionNumberLabel";
+            TransactionNumberLabel.Size = new Size(88, 20);
+            TransactionNumberLabel.TabIndex = 6;
+            TransactionNumberLabel.Text = "Transaction ";
             // 
             // TotalCostLabel
             // 
@@ -465,19 +533,67 @@
             BookingTransactionLabel.TabIndex = 0;
             BookingTransactionLabel.Text = "Transaction Number :";
             // 
+            // SummaryButton
+            // 
+            SummaryButton.Location = new Point(152, 115);
+            SummaryButton.Name = "SummaryButton";
+            SummaryButton.Size = new Size(94, 29);
+            SummaryButton.TabIndex = 19;
+            SummaryButton.Text = "Summary";
+            SummaryButton.UseVisualStyleBackColor = true;
+            // 
+            // ClearButton
+            // 
+            ClearButton.Location = new Point(152, 58);
+            ClearButton.Name = "ClearButton";
+            ClearButton.Size = new Size(94, 29);
+            ClearButton.TabIndex = 20;
+            ClearButton.Text = "Clear";
+            ClearButton.UseVisualStyleBackColor = true;
+            // 
+            // ExitButton
+            // 
+            ExitButton.Location = new Point(152, 173);
+            ExitButton.Name = "ExitButton";
+            ExitButton.Size = new Size(94, 29);
+            ExitButton.TabIndex = 21;
+            ExitButton.Text = "Exit";
+            ExitButton.UseVisualStyleBackColor = true;
+            // 
+            // SearchButton
+            // 
+            SearchButton.Location = new Point(18, 173);
+            SearchButton.Name = "SearchButton";
+            SearchButton.Size = new Size(94, 29);
+            SearchButton.TabIndex = 22;
+            SearchButton.Text = "Search";
+            SearchButton.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(SearchButton);
+            panel1.Controls.Add(ExitButton);
+            panel1.Controls.Add(ClearButton);
+            panel1.Controls.Add(SummaryButton);
+            panel1.Controls.Add(BookButton);
+            panel1.Controls.Add(AddToCartButton);
+            panel1.Controls.Add(SubmitButton);
+            panel1.Controls.Add(DisplayButton);
+            panel1.Location = new Point(747, 355);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(262, 216);
+            panel1.TabIndex = 23;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1092, 704);
+            Controls.Add(panel1);
             Controls.Add(BookingGroupBox);
             Controls.Add(StockPanel);
             Controls.Add(DisplayPanel);
             Controls.Add(AddToCartListBox);
-            Controls.Add(BookButton);
-            Controls.Add(AddToCartButton);
-            Controls.Add(SubmitButton);
-            Controls.Add(DisplayButton);
             Controls.Add(DressSizeListBox);
             Controls.Add(DressSizeLabel);
             Controls.Add(DressNameLabel);
@@ -491,6 +607,7 @@
             StockPanel.PerformLayout();
             BookingGroupBox.ResumeLayout(false);
             BookingGroupBox.PerformLayout();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -539,5 +656,16 @@
         private Label DateOfTranscationLabel;
         private Label CustomerNameLabel;
         private Label TotalCostLabel;
+        private Button SummaryButton;
+        private Button ClearButton;
+        private Button ExitButton;
+        private Label TransactionNumberLabel;
+        private Label DateLabel;
+        private TextBox CustomerNameTextBox;
+        private Label OverallCostLabel;
+        private Label ItemCountLabel;
+        private TextBox PhoneNumberTextBox;
+        private Button SearchButton;
+        private Panel panel1;
     }
 }
