@@ -559,6 +559,7 @@
             ExitButton.TabIndex = 21;
             ExitButton.Text = "Exit";
             ExitButton.UseVisualStyleBackColor = true;
+            ExitButton.Click += ExitButton_Click;
             // 
             // SearchButton
             // 
@@ -568,6 +569,7 @@
             SearchButton.TabIndex = 22;
             SearchButton.Text = "Search";
             SearchButton.UseVisualStyleBackColor = true;
+            SearchButton.Click += SearchButton_Click;
             // 
             // panel1
             // 

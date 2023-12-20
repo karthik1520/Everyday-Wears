@@ -235,6 +235,11 @@ namespace EverydayWears
                         }
                         Transaction.WriteLine($"{OverallCost}");
                     }
+                    AddToCartListBox.Items.Clear();
+                    UpdateStockLabels();
+                    DisplayPanel.Visible = false;
+
+                    FormReset();
                     MessageBox.Show("Your Order has been submitted successfully, Transaction Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
@@ -243,6 +248,19 @@ namespace EverydayWears
                     MessageBox.Show("Error in submitting the Order", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void FormReset()
+        {
+            DressListBox.SelectedIndex = -1;
+            DressSizeListBox.SelectedIndex = -1;
+            DressCountNumericUpDown.Value = 0;
+            CustomerNameTextBox.Text = string.Empty;
+            PhoneNumberTextBox.Text = string.Empty;
+            TransactionNumberLabel.Text = string.Empty;
+            DateLabel.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            StockPanel.Visible = false;
+            DisplayPanel.Visible = false;
         }
 
         private void UpdateSalesReport(StreamWriter writer, string Dress, int ItemCount, decimal OverallCost)
@@ -277,6 +295,22 @@ namespace EverydayWears
             BookingGroupBox.Visible = true;
             DateLabel.Text = DateTime.Now.ToString("dd/MM/yyyy");
             TransactionNumberCounter();
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            Reports reports = new Reports();
+            DialogResult result = reports.ShowDialog();
+
+            if(result == DialogResult.Cancel)
+            {
+                reports.FormReset();
+            }
         }
     }
 }
