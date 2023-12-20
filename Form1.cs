@@ -295,6 +295,21 @@ namespace EverydayWears
             BookingGroupBox.Visible = true;
             DateLabel.Text = DateTime.Now.ToString("dd/MM/yyyy");
             TransactionNumberCounter();
+
+            int CountOfItem = 0;
+            decimal CostOfItemsOverall = 0;
+
+            foreach(string ItemsInCart in AddToCartListBox.Items)
+            {
+                string[] DetailsOfCart = ItemsInCart.Split('-');
+                int Count = int.Parse(DetailsOfCart[2].Trim());
+                decimal DressCost = DressRate[DressName.ToList().IndexOf(DetailsOfCart[0].Trim()),DressSize.ToList().IndexOf
+                    (DetailsOfCart[1].Trim())];
+                CostOfItemsOverall += DressCost * Count;
+                CountOfItem += Count;
+            }
+            ItemCountLabel.Text = CountOfItem.ToString();
+            OverallCostLabel.Text = CostOfItemsOverall.ToString();
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
