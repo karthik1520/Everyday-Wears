@@ -41,6 +41,12 @@
             TransactionNumberRadioButton = new RadioButton();
             SearchAndSummaryResultListBox = new ListBox();
             CloseButton = new Button();
+            SearchButton = new Button();
+            SummaryButton = new Button();
+            IncomeForDressLabel = new Label();
+            IncomeOutputLabel = new Label();
+            OverallSummaryReportButton = new Button();
+            OverallSummaryReportLabel = new Label();
             SearchEngineGroupBox.SuspendLayout();
             SuspendLayout();
             // 
@@ -162,7 +168,7 @@
             SearchAndSummaryResultListBox.Location = new Point(33, 234);
             SearchAndSummaryResultListBox.Name = "SearchAndSummaryResultListBox";
             SearchAndSummaryResultListBox.ScrollAlwaysVisible = true;
-            SearchAndSummaryResultListBox.Size = new Size(943, 304);
+            SearchAndSummaryResultListBox.Size = new Size(943, 244);
             SearchAndSummaryResultListBox.TabIndex = 5;
             // 
             // CloseButton
@@ -175,11 +181,76 @@
             CloseButton.UseVisualStyleBackColor = true;
             CloseButton.Click += CloseButton_Click;
             // 
+            // SearchButton
+            // 
+            SearchButton.Location = new Point(845, 98);
+            SearchButton.Name = "SearchButton";
+            SearchButton.Size = new Size(94, 29);
+            SearchButton.TabIndex = 7;
+            SearchButton.Text = "Search";
+            SearchButton.UseVisualStyleBackColor = true;
+            SearchButton.Click += SearchButton_Click;
+            // 
+            // SummaryButton
+            // 
+            SummaryButton.Location = new Point(110, 170);
+            SummaryButton.Name = "SummaryButton";
+            SummaryButton.Size = new Size(94, 29);
+            SummaryButton.TabIndex = 8;
+            SummaryButton.Text = "Summary";
+            SummaryButton.UseVisualStyleBackColor = true;
+            SummaryButton.Click += SummaryButton_Click;
+            // 
+            // IncomeForDressLabel
+            // 
+            IncomeForDressLabel.AutoSize = true;
+            IncomeForDressLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            IncomeForDressLabel.Location = new Point(65, 504);
+            IncomeForDressLabel.Name = "IncomeForDressLabel";
+            IncomeForDressLabel.Size = new Size(139, 20);
+            IncomeForDressLabel.TabIndex = 9;
+            IncomeForDressLabel.Text = "Income For Dress :";
+            // 
+            // IncomeOutputLabel
+            // 
+            IncomeOutputLabel.AutoSize = true;
+            IncomeOutputLabel.Location = new Point(232, 504);
+            IncomeOutputLabel.Name = "IncomeOutputLabel";
+            IncomeOutputLabel.Size = new Size(58, 20);
+            IncomeOutputLabel.TabIndex = 10;
+            IncomeOutputLabel.Text = "Income";
+            // 
+            // OverallSummaryReportButton
+            // 
+            OverallSummaryReportButton.Location = new Point(567, 568);
+            OverallSummaryReportButton.Name = "OverallSummaryReportButton";
+            OverallSummaryReportButton.Size = new Size(94, 29);
+            OverallSummaryReportButton.TabIndex = 11;
+            OverallSummaryReportButton.Text = "Report";
+            OverallSummaryReportButton.UseVisualStyleBackColor = true;
+            OverallSummaryReportButton.Click += OverallSummaryReportButton_Click;
+            // 
+            // OverallSummaryReportLabel
+            // 
+            OverallSummaryReportLabel.AutoSize = true;
+            OverallSummaryReportLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            OverallSummaryReportLabel.Location = new Point(529, 504);
+            OverallSummaryReportLabel.Name = "OverallSummaryReportLabel";
+            OverallSummaryReportLabel.Size = new Size(182, 20);
+            OverallSummaryReportLabel.TabIndex = 12;
+            OverallSummaryReportLabel.Text = "Overall Summary Report";
+            // 
             // Reports
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(989, 609);
+            Controls.Add(OverallSummaryReportLabel);
+            Controls.Add(OverallSummaryReportButton);
+            Controls.Add(IncomeOutputLabel);
+            Controls.Add(IncomeForDressLabel);
+            Controls.Add(SummaryButton);
+            Controls.Add(SearchButton);
             Controls.Add(CloseButton);
             Controls.Add(SearchAndSummaryResultListBox);
             Controls.Add(SearchEngineGroupBox);
@@ -210,5 +281,11 @@
         private TextBox TransactionNumberSearchTextBox;
         private ListBox SearchAndSummaryResultListBox;
         private Button CloseButton;
+        private Button SearchButton;
+        private Button SummaryButton;
+        private Label IncomeForDressLabel;
+        private Label IncomeOutputLabel;
+        private Button OverallSummaryReportButton;
+        private Label OverallSummaryReportLabel;
     }
 }
